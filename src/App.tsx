@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import {Navigate, Route, Routes} from "react-router-dom";
+import {routes} from "./routes";
+import {MAIN_ROUTE} from "./const/const";
+import NavBar from "./components/NavBar";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <>
+            <NavBar/>
+            <Routes>
+                {routes.map(route => (
+                    <Route
+                        path={route.path}
+                        element={route.element}
+                        key={route.path}
+                    />
+                ))}
+                <Route
+                    path="*"
+                    element={<Navigate to={MAIN_ROUTE} replace/>}
+                    key={MAIN_ROUTE}
+                />
+            </Routes>
+        </>
+    );
 }
 
 export default App;
