@@ -22,7 +22,7 @@ const CreateStreamPage:FC = () => {
             noValidate
             autoComplete="off"
         >
-            <div>
+            <Box sx={{ display: 'flex',flexDirection: 'column' }}>
                 <TextField
                     required
                     id="streamName"
@@ -39,8 +39,11 @@ const CreateStreamPage:FC = () => {
                         setStream({...stream, url: event.target.value});
                     }}
                 />
-                <Button onClick={submit}>Submit</Button>
-            </div>
+                <Button
+                    sx={{width:220}}
+                    onClick={submit}
+                >Create stream</Button>
+            </Box>
         </Box>
     );
 };
