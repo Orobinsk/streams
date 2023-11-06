@@ -1,11 +1,11 @@
-import React, {FC, memo} from 'react';
+import React, {FC} from 'react';
 import {Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
 import {stream} from "../types/types";
 
 interface TableStreamsProps {
     streams: stream[];
 }
-const TableStreams:FC<TableStreamsProps> = memo(({streams}) => {
+const TableStreams:FC<TableStreamsProps> = ({streams}) => {
     return (
         <TableContainer component={Paper}>
             <Table sx={{minWidth: 650}} aria-label="simple table">
@@ -56,6 +56,6 @@ const TableStreams:FC<TableStreamsProps> = memo(({streams}) => {
             </Table>
         </TableContainer>
     );
-});
+};
 
 export default TableStreams;

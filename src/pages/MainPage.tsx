@@ -1,4 +1,4 @@
-import React, {memo, useEffect, useState} from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import {getStreams} from "../api/api";
 import {Button} from "@mui/material";
 import {params, streamsDataProps} from "../types/types";
@@ -7,15 +7,13 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import TableStreams from "../components/TableStreams";
 
 
-const MainPage = memo(() => {
+const MainPage:FC = () => {
     const [streamsData, setStreamsData] = useState<streamsDataProps>({estimated_count: 0, streams: []})
     const [paramsRequest, setParamsRequest] = useState<params>({limit: 100, cursor: 0})
 
     function loadData() {
         getStreams(paramsRequest).then(data => {
-            if(data !==streamsData){
                 setStreamsData(data)
-            }
         });
     }
 
@@ -50,6 +48,6 @@ const MainPage = memo(() => {
             </Button>
         </div>
     );
-});
+};
 
 export default MainPage;

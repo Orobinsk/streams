@@ -1,10 +1,10 @@
-import React, {useState} from 'react';
+import React, {FC, useState} from 'react';
 import {Box, Button, TextField} from "@mui/material";
 import {postStream} from "../api/api";
 import {useNavigate} from "react-router-dom";
 import {MAIN_ROUTE} from "../const/const";
 
-const CreateStreamPage = () => {
+const CreateStreamPage:FC = () => {
     const[stream,setStream]=useState({name:'',url:''})
     const navigate = useNavigate()
 
