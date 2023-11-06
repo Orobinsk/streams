@@ -10,13 +10,12 @@ export async function getStreams(params?:params): Promise<streamsDataProps> {
     }
 }
 
-export async function postStream(name:string,url:string){
-    axios.put(`http://localhost:4010/streamer/api/v3/streams/${name}`, {inputs: [{URL:url}]})
-        .then(function (response) {
-            console.log(response);
-        })
-        .catch(function (error) {
-            console.log(error);
+export async function postStream(name: string, url: string) {
+    try {
+        await axios.put(`http://localhost:4010/streamer/api/v3/streams/${name}`, {
+            inputs: [{ URL: url }],
         });
+    } catch (error) {
+        console.error(error);
+    }
 }
-
